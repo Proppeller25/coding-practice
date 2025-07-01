@@ -126,6 +126,7 @@ function signIn () {
     const data = await response.json();
     if (data.success) {
       alert('Welcome ' + `${data.user.lastName} ` + `${data.user.firstName}`);
+      window.location.href = `http://localhost:3001/profile/${data.user.userName}`;
     } else {
       alert(data.message);
     }

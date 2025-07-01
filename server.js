@@ -1,3 +1,4 @@
+
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
@@ -9,6 +10,8 @@ app.use(cors());
 app.use(express.json());
 
 const USERS_FILE = path.join(__dirname, 'users.json');
+
+
 
 // Helper to read users from file
 function readUsers() {
@@ -46,6 +49,21 @@ app.post('/signin', (req, res) => {
     res.status(401).json({ success: false, message: 'Incorrect Password.' });
   } else {
     res.status(404).json({ success: false, message: 'User not found.' });
+  }
+});
+
+// Set up EJS as the view engine
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+// Profile page route (GET /profile/:username)
+app.get('/profile/:username', (req, res) => {
+  const users = readUsers();
+  const user = users.find(u => u.userName === req.params.username);
+  if (user) {
+    res.render('profile', { user });
+  } else {
+    res.status(404).send('User not found');
   }
 });
 
