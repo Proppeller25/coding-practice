@@ -2,7 +2,21 @@ const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
+const multer = require('multer');
 const app = express();
+// Multer setup for image uploads
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, 'images'));
+  },
+  filename: function (req, file, cb) {
+    // Use username + timestamp + ext for uniqueness
+    const ext = path.extname(file.originalname);
+    const username = req.params.username || 'user';
+    cb(null, username + '-' + Date.now() + ext);
+  }
+});
+const upload = multer({ storage });
 // Serve static files from the images folder at /images
 app.use('/images', express.static(path.join(__dirname, 'images')));
 // Optionally serve other static files from a public folder if needed
@@ -87,8 +101,9 @@ app.get('/settings', (req, res) => {
   }
 });
 
-// Settings update route (POST /settings/:username)
-app.post('/settings/:username', (req, res) => {
+// Settings update route (POST /settings/:username) with image upload
+app.post('/settings/:username', upload.single('ProfilePicture'), (req, res) => {
+  // If multipart, fields are in req.body, file in req.file
   const { firstName, lastName, userName, passWord, email, phoneNo } = req.body;
   const users = readUsers();
   const userIndex = users.findIndex(u => u.userName === req.params.username);
@@ -103,7 +118,11 @@ app.post('/settings/:username', (req, res) => {
     return res.status(409).json({ success: false, message: 'Phone number already used.' });
   }
   // Update user
-  users[userIndex] = { ...users[userIndex], firstName, lastName, passWord, email, phoneNo };
+  let updatedUser = { ...users[userIndex], firstName, lastName, passWord, email, phoneNo };
+  if (req.file) {
+    updatedUser.profilePicture = req.file.filename;
+  }
+  users[userIndex] = updatedUser;
   writeUsers(users);
   res.json({ success: true, user: users[userIndex] });
 });

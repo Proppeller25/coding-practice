@@ -23,10 +23,10 @@
 
     .fa-user {
       position: absolute;
-      left: 95%;
-      top: 17px;
-      width: 1.25rem;
-      border-radius: 5px;
+      right: 10px;
+      top: 10px;
+      font-size: 30px;
+      border-radius: 50%;
     }
     .profile-container {
       max-width: 400px;
@@ -76,7 +76,7 @@
       <button id="nav-toggle" aria-label="Toggle navigation" style="background:none;border:none;cursor:pointer;font-size:1.5em;">
         <img src="../images/bars-solid.svg" class="MenuIcon" style="width:1.5em;height:1.5em;display:inline;">
       </button>
-      <img src="../images/user-solid.svg" class="fa-user" style="width:1.5em;height:1.5em;display:inline;">
+      <img src="../images/<%= user.profilePicture ? user.profilePicture : 'user-solid.svg' %>" class="fa-user" style="width:1.5em;height:1.5em;display:inline;">
       <ul id="nav-menu" style="display:none;flex-direction:column;align-items:center;gap:20px;margin-top:10px;">
       
       <li><a href="/profile/<%= user.userName %>">Profile</a></li>

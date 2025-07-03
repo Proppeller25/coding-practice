@@ -67,7 +67,7 @@
   </nav>
   <div class="settings-container">
     <h2>Account Settings</h2>
-    <form id="settings-form">
+    <form id="settings-form" enctype="multipart/form-data">
       <label for="firstName">First Name</label>
       <input type="text" id="firstName" name="firstName" value="<%= user.firstName %>" required>
       <label for="lastName">Last Name</label>
@@ -82,7 +82,7 @@
       <input type="password" id="passWord" name="passWord" value="<%= user.passWord %>" required>
       <label for="confirmPassWord">Confirm Password</label>
       <input type="password" id="confirmPassWord" name="confirmPassWord" required>
-      <label for="ProfilePicture">Profile Picture</label>
+      <label for="ProfilePicture">Change Profile Picture</label>
       <input type="file" id="ProfilePicture" name="ProfilePicture">
       <div id="confirm-message" style="font-size:0.95em;"></div>
       <button class="btn" type="submit">Save Changes</button>
@@ -124,19 +124,11 @@
         confirmInput.focus();
         return;
       }
-      const data = {
-        firstName: form.firstName.value,
-        lastName: form.lastName.value,
-        userName: form.userName.value,
-        email: form.email.value,
-        phoneNo: form.phoneNo.value,
-        passWord: form.passWord.value
-      };
+      const formData = new FormData(form);
       try {
         const res = await fetch(`/settings/<%= user.userName %>`, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
+          body: formData
         });
         const result = await res.json();
         const msgDiv = document.getElementById('settings-message');
@@ -144,7 +136,7 @@
           msgDiv.textContent = 'Profile updated successfully!';
           msgDiv.className = 'success';
           const timeoutId = setTimeout(() => {
-            window.location.href = `/profile/${data.userName}`;
+            window.location.href = `/profile/${form.userName.value}`;
           }, 5000);
         } else {
           msgDiv.textContent = result.message || 'Update failed.';
