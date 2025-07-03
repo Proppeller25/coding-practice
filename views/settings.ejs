@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Settings</title>
+  <style>
+    body { font-family: 'Trebuchet MS', Arial, sans-serif; background: #f4f4f4; }
+    .settings-container {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 15px;
+      background: #fff;
+      box-shadow: 0 2px 8px #0002;
+    }
+    h2 { color: #203a43; text-align: center; }
+    form { display: flex; flex-direction: column; gap: 15px; }
+    label { font-weight: bold; }
+    input, select {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+    .btn {
+      background: #7CC3E3;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .btn:disabled { background: #ccc; }
+    .success { color: green; text-align: center; }
+    .error { color: red; text-align: center; }
+    .logout-btn {
+      margin-top: 20px;
+      padding: 8px 20px;
+      border: none;
+      border-radius: 5px;
+      background: #7CC3E3;
+      color: #fff;
+      cursor: pointer;
+    }
+    nav {
+      background: #7CC3E3;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 8px #0002;
+      margin-bottom: 20px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #203a43;
+      margin-right: 20px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/profile/<%= user.userName %>">Profile</a>
+    <a href="/settings">Settings</a>
+    <a href="/help">Help</a>
+    <a href="http://localhost:5500/practice.html">Logout</a>
+  </nav>
+  <div class="settings-container">
+    <h2>Account Settings</h2>
+    <form id="settings-form">
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" name="firstName" value="<%= user.firstName %>" required>
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" name="lastName" value="<%= user.lastName %>" required>
+      <label for="userName">Username</label>
+      <input type="text" id="userName" name="userName" value="<%= user.userName %>" required readonly>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" value="<%= user.email %>" required>
+      <label for="phoneNo">Phone Number</label>
+      <input type="text" id="phoneNo" name="phoneNo" value="<%= user.phoneNo %>" required>
+      <label for="passWord">Password</label>
+      <input type="password" id="passWord" name="passWord" value="<%= user.passWord %>" required>
+      <label for="confirmPassWord">Confirm Password</label>
+      <input type="password" id="confirmPassWord" name="confirmPassWord" required>
+      <div id="confirm-message" style="font-size:0.95em;"></div>
+      <button class="btn" type="submit">Save Changes</button>
+      <div id="settings-message"></div>
+    </form>
+  </div>
+  <footer style="text-align:center;margin-top:20px;">
+    <small>creation of Egbebo Tamarauemomoemi Emmanuel © 2025</small>
+  </footer>
+  <script>
+    const passInput = document.getElementById('passWord');
+    const confirmInput = document.getElementById('confirmPassWord');
+    const confirmMsg = document.getElementById('confirm-message');
+    const form = document.getElementById('settings-form');
+
+    function checkPasswords() {
+      if (confirmInput.value === '') {
+        confirmMsg.textContent = '';
+        confirmMsg.className = '';
+        return false;
+      }
+      if (passInput.value === confirmInput.value) {
+        confirmMsg.textContent = 'Passwords match';
+        confirmMsg.className = 'success';
+        return true;
+      } else {
+        confirmMsg.textContent = 'Passwords do not match';
+        confirmMsg.className = 'error';
+        return false;
+      }
+    }
+
+    passInput.addEventListener('input', checkPasswords);
+    confirmInput.addEventListener('input', checkPasswords);
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      if (!checkPasswords()) {
+        confirmInput.focus();
+        return;
+      }
+      const data = {
+        firstName: form.firstName.value,
+        lastName: form.lastName.value,
+        userName: form.userName.value,
+        email: form.email.value,
+        phoneNo: form.phoneNo.value,
+        passWord: form.passWord.value
+      };
+      try {
+        const res = await fetch(`/settings/<%= user.userName %>`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+        const msgDiv = document.getElementById('settings-message');
+        if (result.success) {
+          msgDiv.textContent = 'Profile updated successfully!';
+          msgDiv.className = 'success';
+        } else {
+          msgDiv.textContent = result.message || 'Update failed.';
+          msgDiv.className = 'error';
+        }
+      } catch (err) {
+        const msgDiv = document.getElementById('settings-message');
+        msgDiv.textContent = 'Could not update profile.';
+        msgDiv.className = 'error';
+      }
+    });
+  </script>
+</body>
+</html>

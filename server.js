@@ -1,4 +1,3 @@
-
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
@@ -65,6 +64,44 @@ app.get('/profile/:username', (req, res) => {
   } else {
     res.status(404).send('User not found');
   }
+});
+
+// Settings page route (GET /settings)
+app.get('/settings', (req, res) => {
+  // For demo, get user by query or default to first user
+  const users = readUsers();
+  let user;
+  if (req.query.username) {
+    user = users.find(u => u.userName === req.query.username);
+  } else {
+    user = users[0];
+  }
+  if (user) {
+    res.render('settings', { user });
+  } else {
+    res.status(404).send('User not found');
+  }
+});
+
+// Settings update route (POST /settings/:username)
+app.post('/settings/:username', (req, res) => {
+  const { firstName, lastName, userName, passWord, email, phoneNo } = req.body;
+  const users = readUsers();
+  const userIndex = users.findIndex(u => u.userName === req.params.username);
+  if (userIndex === -1) {
+    return res.status(404).json({ success: false, message: 'User not found.' });
+  }
+  // Check for email/phone conflicts (except for self)
+  if (users.some((u, i) => i !== userIndex && u.email.toLowerCase() === email.toLowerCase())) {
+    return res.status(409).json({ success: false, message: 'Email already used.' });
+  }
+  if (users.some((u, i) => i !== userIndex && u.phoneNo === phoneNo)) {
+    return res.status(409).json({ success: false, message: 'Phone number already used.' });
+  }
+  // Update user
+  users[userIndex] = { ...users[userIndex], firstName, lastName, passWord, email, phoneNo };
+  writeUsers(users);
+  res.json({ success: true, user: users[userIndex] });
 });
 
 // Registration endpoint
