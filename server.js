@@ -3,6 +3,10 @@ const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 const app = express();
+// Serve static files from the images folder at /images
+app.use('/images', express.static(path.join(__dirname, 'images')));
+// Optionally serve other static files from a public folder if needed
+// app.use(express.static('public'));
 const PORT = 3001;
 
 app.use(cors());
