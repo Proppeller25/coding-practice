@@ -1,3 +1,5 @@
+// Signup page route
+
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
@@ -153,6 +155,10 @@ app.post('/register', (req, res) => {
 app.get('/users', (req, res) => {
   const users = readUsers();
   res.json(users);
+});
+
+app.get('/signup', (req, res) => {
+  res.render('signup');
 });
 
 app.listen(PORT, () => {

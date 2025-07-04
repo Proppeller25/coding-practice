@@ -24,9 +24,11 @@
     .fa-user {
       position: absolute;
       right: 10px;
-      top: 10px;
-      font-size: 30px;
+      top: 5px;
+      font-size: 33px;
       border-radius: 50%;
+      border: 2px solid rgb(243, 239, 239);
+      box-shadow: 10px 2px 8px #0002;
     }
     .profile-container {
       max-width: 400px;
@@ -86,11 +88,7 @@
       </ul>
     </nav>
     <script>
-      const navToggle = document.querySelector('#nav-toggle');
-      const navMenu = document.getElementById('nav-menu');
-      navToggle.addEventListener('click', () => {
-      navMenu.style.display = navMenu.style.display === 'none' ? 'flex' : 'none';
-      });
+    
     </script>
     <h2>Welcome, <%= user.firstName %> <%= user.lastName %></h2>
   </header>
@@ -112,6 +110,16 @@
       window.location.href = `http://localhost:5500/practice.html`;
       alert(`You have successfully logged out`)
       })
+
+      let isClicked = false 
+      const navToggle = document.querySelector('#nav-toggle');
+      const navMenu = document.getElementById('nav-menu');
+      navToggle.addEventListener('click', () => {
+        isClicked = !isClicked
+      navMenu.style.display = navMenu.style.display === 'none' ? 'flex' : 'none';
+      if(isClicked) document.querySelector('.MenuIcon').src = '../images/xmark-solid.svg'
+      else document.querySelector('.MenuIcon').src = '../images/bars-solid.svg'
+      });
     </script>
   </div>
 </body>

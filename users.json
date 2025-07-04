@@ -8,8 +8,8 @@
     "phoneNo": "07032931019"
   },
   {
-    "firstName": "Egbebo",
-    "lastName": "Emmanuelson",
+    "firstName": "Tamarauemomoemi",
+    "lastName": "Egbebo",
     "userName": "emmaxus",
     "passWord": "09029020440e",
     "email": "emmanuelegbebo@gmail.com",
@@ -41,11 +41,11 @@
     "phoneNo": "08026879494"
   },
   {
-    "firstName": "Egbebo",
-    "lastName": "Anthony",
+    "firstName": "Paul",
+    "lastName": "Akpama",
     "userName": "Bunugha",
     "passWord": "09029020440e",
-    "email": "anthony@gmail.com",
+    "email": "akpama@gmail.com",
     "phoneNo": "07010399123",
     "profilePicture": "Bunugha-1751585961223.png"
   },
@@ -64,5 +64,13 @@
     "passWord": "09029020440e",
     "email": "Bakerbeauty@gmail.com",
     "phoneNo": "07010399638"
+  },
+  {
+    "firstName": "Uchiha",
+    "lastName": "Itachi",
+    "userName": "konoha",
+    "passWord": "09029020440e",
+    "email": "Itachi@gmail.com",
+    "phoneNo": "1234567890"
   }
 ]
