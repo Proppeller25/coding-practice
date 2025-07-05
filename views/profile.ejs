@@ -148,12 +148,18 @@
         document.body.style.color = '#fff';
         document.querySelector('.profile-container').style.color = 'white'
         document.querySelector('.profile-container').style.background = 'inherit';
+        document.querySelector('h2').style.color = 'white';
+        document.querySelector('footer').style.color = 'black';
+        document.querySelector('footer').style.background = '#203a43';
       } else {
-        this.src = '../images/toggle-off-solid.svg';
+        this.src = '../images/toggle-off-solid.svg'
         this.classList.remove('toggle-on');
-        document.body.style.background = '#f4f4f4';
-        document.body.style.color = '#203a43';
+        document.body.style.background = '#f4f4f4'
+        document.body.style.color = '#203a43'
         document.querySelector('.profile-container').style.color = 'black'
+        document.querySelector('h2').style.color = 'black'
+        document.querySelector('footer').style.color = 'black'
+        document.querySelector('footer').style.background = '#fff';
       }
     });
 
@@ -186,6 +192,5 @@
       .catch(() => alert('Server error. Please try again.'));
     });
   </script>
-  </div>
 </body>
 </html>
