@@ -1,5 +1,4 @@
 // Signup page route
-
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
@@ -149,6 +148,26 @@ app.post('/register', (req, res) => {
   users.push(newUser);
   writeUsers(users);
   res.json({ success: true, user: newUser });
+});
+
+// Delete account endpoint
+app.post('/delete-account/:username', (req, res) => {
+  const users = readUsers();
+  const userIndex = users.findIndex(u => u.userName === req.params.username);
+  if (userIndex === -1) {
+    return res.status(404).json({ success: false, message: 'User not found.' });
+  }
+  // Optionally delete profile picture file if exists
+  const user = users[userIndex];
+  if (user.profilePicture) {
+    const imgPath = path.join(__dirname, 'images', user.profilePicture);
+    if (fs.existsSync(imgPath)) {
+      try { fs.unlinkSync(imgPath); } catch {}
+    }
+  }
+  users.splice(userIndex, 1);
+  writeUsers(users);
+  res.json({ success: true, message: 'Account deleted.' });
 });
 
 // Get all users (for testing/admin)

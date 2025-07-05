@@ -16,7 +16,7 @@
       box-shadow: 0 2px 8px #0002;
       position: relative;
     }
-
+    
     .MenuIcon {
       color: black;
     }
@@ -29,6 +29,11 @@
       border-radius: 50%;
       border: 2px solid rgb(243, 239, 239);
       box-shadow: 10px 2px 8px #0002;
+      cursor: pointer;
+    }
+    .fa-user:hover {
+      scale: 1.5;
+      transition: scale 0.2s ease-in-out;
     }
     .profile-container {
       max-width: 400px;
@@ -85,6 +90,10 @@
       <li><a href="/settings?username=<%= user.userName %>">Settings</a></li>
       <li><a href="/help">Help</a></li>
       <li><a href="http://localhost:5500/practice.html">Logout</a></li>
+      <li><a href="#" id="delete-account-link">Delete Account</a></li>
+  <script>
+    
+  </script>
       </ul>
     </nav>
     <script>
@@ -120,6 +129,25 @@
       if(isClicked) document.querySelector('.MenuIcon').src = '../images/xmark-solid.svg'
       else document.querySelector('.MenuIcon').src = '../images/bars-solid.svg'
       });
+
+      document.getElementById('delete-account-link').addEventListener('click', function(e) {
+      e.preventDefault();
+      if (!confirm('Are you sure you want to delete your account? This action cannot be undone.')) return;
+      fetch(`/delete-account/<%= user.userName %>`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert('Account deleted successfully.');
+          window.location.href = 'http://localhost:5500/practice.html';
+        } else {
+          alert('Error: ' + (data.message || 'Could not delete account.'));
+        }
+      })
+      .catch(() => alert('Server error. Please try again.'));
+    });
     </script>
   </div>
 </body>
