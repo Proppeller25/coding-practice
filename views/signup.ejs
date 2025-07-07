@@ -233,6 +233,13 @@
         if (data.success) {
           alert('Account created successfully!');
           document.getElementById('signup-form').reset();
+          document.querySelectorAll('input').forEach((input => {
+            input.style.outlineColor = 'black'
+            input.style.border = 'none';
+          }))
+          setTimeout(() => {
+            window.location.href = 'http://localhost:5500/practice.html';
+          }, 2000);
         } else {
           alert(data.message);
         }

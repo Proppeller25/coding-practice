@@ -30,6 +30,7 @@
       border: 2px solid rgb(243, 239, 239);
       box-shadow: 10px 2px 8px #0002;
       cursor: pointer;
+      transition: scale 0.5s ease-in-out;
     }
     .fa-user:hover {
       scale: 1.5;
@@ -94,6 +95,7 @@
       background: #4caf50 !important;
       color: #fff !important;
       filter: drop-shadow(0 0 4px #4caf50);
+      transition: background 1s;
     }
   </style>
 </head>
@@ -145,12 +147,15 @@
         this.src = '../images/toggle-on-solid.svg';
         this.classList.add('toggle-on');
         document.body.style.background = '#203a43';
+        document.body.style.transition = 'background .5s ease-in';
         document.body.style.color = '#fff';
         document.querySelector('.profile-container').style.color = 'white'
         document.querySelector('.profile-container').style.background = 'inherit';
         document.querySelector('h2').style.color = 'white';
         document.querySelector('footer').style.color = 'black';
         document.querySelector('footer').style.background = '#203a43';
+        document.querySelector('footer').style.transition = 'background .5s ease-in'
+        
       } else {
         this.src = '../images/toggle-off-solid.svg'
         this.classList.remove('toggle-on');
@@ -160,6 +165,7 @@
         document.querySelector('h2').style.color = 'black'
         document.querySelector('footer').style.color = 'black'
         document.querySelector('footer').style.background = '#fff';
+        document.querySelector('footer').style.transition = 'background .5s ease-in';
       }
     });
 

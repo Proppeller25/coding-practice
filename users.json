@@ -64,5 +64,29 @@
     "passWord": "09029020440e",
     "email": "Itachi@gmail.com",
     "phoneNo": "1234567890"
+  },
+  {
+    "firstName": "Anthony",
+    "lastName": "Egbebo",
+    "userName": "Bunugha",
+    "passWord": "09029020440e",
+    "email": "bunugha@gmail.com",
+    "phoneNo": "09029020440"
+  },
+  {
+    "firstName": "Mark",
+    "lastName": "Egbebo",
+    "userName": "Makoko",
+    "passWord": "09029020440e",
+    "email": "AbiriMark@gmail.com",
+    "phoneNo": "08035639235"
+  },
+  {
+    "firstName": "naruto",
+    "lastName": "Uzumaki",
+    "userName": "Uzumaki",
+    "passWord": "09029020440e",
+    "email": "Naruto@yahoo.com",
+    "phoneNo": "09029020123"
   }
 ]
