@@ -16,47 +16,40 @@ function studentsData() {
     sentence1.innerHTML = `<em>There ${students.length >= 2 ?'are' : 'is' } currently ${students.length} ${students.length >= 2 ? 'students': 'student'}</em>`
 
     //// this code displays the data
-    students.forEach(student => {
+    students.forEach((student, i) => {
         const hobbies = student.hobbies.join(', ')
         const div = document.createElement('div')
-        div.style.fontSize = '15px'
-        div.style.transition = 'background-color 1s ease, transform 1s ease'
-
-        div.addEventListener('mouseout', () => {
-            div.innerHTML = `<img class = 'studentPic' src = images/${student.lastName}.png>`
-            const pics = document.querySelectorAll('.studentPic')
-            pics.forEach(p => {
-                p.style.maxWidth = '200px'
-                p.style.maxHeight = '150px'
-                p.style.borderRadius = '50%'
-                p.style.border = '1px solid black'
-            })
-            div.style.backgroundColor = ''
-            div.style.transform = 'scale(1)'; // Reset scale on mouse out
-
-        })
-
-        div.addEventListener('mouseover', () => {
-            div.innerHTML = `<img class = 'studentPic' src = images/${student.lastName}.png> <p><strong>Name: ${student.lastName.toUpperCase() + ' ' + student.firstName.toUpperCase()}</strong></p> <p><strong>Matric No.: ${student.matricNo}</strong></p> <p><strong>RegNo: ${student.regNo.toUpperCase()}</strong></p> <p><strong>Hobbies: ${hobbies}</strong></p>`
-
-            const pics = document.querySelectorAll('.studentPic')
-            pics.forEach(p => {
-                p.style.maxWidth = '200px'
-                p.style.maxHeight = '150px'
-                p.style.borderRadius = '50%'
-                p.style.border = '1px solid black'
-            })
-            div.style.backgroundColor = '#7CC3E3'
-            div.style.transform = 'scale(1.02)'; // Scale up on mouse over
-        })
-
-        div.innerHTML = `<img class = 'studentPic' src = images/${student.lastName}.png>`
+        const img = document.createElement('img')
         div1.appendChild(div)
-        div.style.textAlign = 'center'
-        div.style.padding = '20px'
-            // div.style.border = '1px solid black'
+        div.appendChild(img)
+        // --- FIXED HOVER LOGIC ---
+        const info = document.createElement('div');
+        info.style.display = 'none';
+        div.appendChild(info);
+        div.style.transition = 'background 1s ease, transform 1s ease';
+        img.src = `./images/${student.lastName}.png`
 
+        img.addEventListener('mouseover', () => {
+          info.innerHTML = `<p><strong>Name: ${student.lastName.toUpperCase() + ' ' + student.firstName.toUpperCase()}</strong></p> <p><strong>Matric No.: ${student.matricNo}</strong></p> <p><strong>RegNo: ${student.regNo.toUpperCase()}</strong></p> <p><strong>Hobbies: ${hobbies}</strong></p>`;
+          info.style.display = 'block';
+          div.style.transform = 'scale(1.02)';
+          div.style.background = '#7CC3E3'
+          info.style.fontSize = '15px'
+        });
 
+        img.addEventListener('mouseout', () => {
+          info.style.display = 'none';
+          div.style.transform = 'scale(1)';
+          div.style.background = ''
+        })
+        
+
+        img.style.maxWidth = '250px'
+        img.style.maxHeight = '150px'
+        img.style.borderRadius = '50%'
+        img.style.padding = '10px'
+
+        div.style.textAlign ='center'
         })
         ///// styles
     body.style.padding = '0';
@@ -67,7 +60,8 @@ function studentsData() {
     // body.style.overflowX = 'hidden';
     // body.style.fontWeight = 'normal';
     body.style.backgroundImage = "url('./images/NDU Logo.png')"
-    body.style.backgroundSize = 'cover';
+    body.style.backgroundRepeat = 'no-repeat'
+    // body.style.backgroundSize = '100%';
     body.style.backgroundColor = 'transparent'
     body.style.backgroundPosition = 'center';
 
@@ -95,7 +89,7 @@ function studentsData() {
     })
 }
 
-// studentsData()
+studentsData()
 
 function signIn () {
     const body = document.querySelector('body')
@@ -215,5 +209,5 @@ console.log(users)
 
 }
 
-signIn()
+// signIn()
 
