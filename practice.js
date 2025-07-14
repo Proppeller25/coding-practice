@@ -64,6 +64,7 @@ function studentsData() {
     // body.style.backgroundSize = '100%';
     body.style.backgroundColor = 'transparent'
     body.style.backgroundPosition = 'center';
+    body.style.backgroundAttachment = 'stretch'
 
     div1.style.display = 'grid'
     div1.style.gridTemplateColumns = 'repeat(auto-fit, minmax(200px, 1fr))'
