@@ -91,7 +91,7 @@ function studentsData() {
     })
 }
 
-studentsData()
+// studentsData()
 
 function signIn () {
     const body = document.querySelector('body')
@@ -211,5 +211,5 @@ console.log(users)
 
 }
 
-// signIn()
+signIn()
 
