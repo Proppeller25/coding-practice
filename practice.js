@@ -20,12 +20,12 @@ function studentsData() {
         const hobbies = student.hobbies.join(', ')
         const div = document.createElement('div')
         const img = document.createElement('img')
+        const info = document.createElement('div')
         div1.appendChild(div)
         div.appendChild(img)
-        // --- FIXED HOVER LOGIC ---
-        const info = document.createElement('div');
+        div.appendChild(info)
         info.style.display = 'none';
-        div.appendChild(info);
+        
         div.style.transition = 'background 1s ease, transform 1s ease';
         img.src = `./images/${student.lastName}.png`
 
@@ -72,6 +72,7 @@ function studentsData() {
     div1.style.backgroundColor = '#f4f4f4'
     div1.style.opacity = '0.9'
     div1.style.padding = '20px'
+    div1.style.margin = '20px'
         // div1.style.margin = '20px'
 
     sentence.style.fontSize = '50px'
