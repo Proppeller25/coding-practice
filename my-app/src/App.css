@@ -1,38 +1,93 @@
-.App {
+body {
+  font-family: 'Trebuchet MS', verdana, Arial, Tahoma, 'Times New Roman', Georgia, Garamond, 'Courier New';
+  background-image: url('./images/NDU\ Logo.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 0 auto;
+  padding: 0;
+  height: 100vh;
+}
+
+.cardsDiv {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 5px;
+  background-color: #f4f4f4;
+  /* object-fit: contain; */
+  margin: 0 auto; /* center horizontally */
   text-align: center;
+  overflow: hidden;
+  max-width: 1200px; /* or whatever maximum width you want */
+  width: 90%;
+  max-height: 50%; /* so it is responsive */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.card{
+  transition: all .5s ease-in;
+  max-width: 200px;
+  margin: 10px 5px;
+  border-radius: 10px;
+  justify-self: center;
+  overflow: hidden;
+  
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.rootDiv {
+  text-align: center;
+  overflow-anchor: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+img {
+  max-width: 250px;
+  max-height: 120px;
+  border-radius: 50%;
+  padding: 10px 0;
+  transition: all 1s ease-in-out;
 }
 
-.App-link {
-  color: #61dafb;
+img:hover{
+  transform: scale(1.1);
 }
 
-@keyframes App-logo-spin {
+.card:has(img:hover) {
+  background-color:#7CC3E3;
+  padding: 5px;
+  overflow-anchor: none;
+  overflow: hidden;
+  max-height: 100vh;
+}
+
+img:hover + .studentInfo {
+  display: block;
+  background-color: #7CC3E3;
+  animation: easeIn 2s;
+  overflow-anchor: none;
+  max-height: 100vh;
+}
+
+.studentInfo {
+  text-align: center;
+  display: none;
+  animation: easeIn 2.5s;
+  padding: 5px;
+  border-radius: 10px;
+  overflow-anchor: none;
+}
+
+h1 {
+  letter-spacing: 10px;
+  font-size: 40px;
+  text-transform: uppercase;
+  color: #E29040;
+}
+
+@keyframes easeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
   }
 }
