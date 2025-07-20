@@ -84,7 +84,7 @@ function App() {
       <div className="cardsDiv">
         {students.map((student, index) => (
           <div className="card" key={index}>
-            <img src={images[`${student.lastName}.png`]} alt={student.alt} />
+            <img src={images[`${student.lastName}.png`]} alt={student.lastName} />
             <div className="studentInfo">
               <strong>
                 <p>
