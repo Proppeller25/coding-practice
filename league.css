@@ -2,11 +2,12 @@
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
 }
 body {
-  background-image: url('./images/ddgCUP.jpg');
+  /* background-image: url('./images/ddgCUP.jpg'); */
   background-repeat: no-repeat;
   background-position: center;
   background-size:contain;
   background-attachment: fixed;
+  text-align: center;
 }
 .tableContainer {
   background-color: #f4f4f4;
@@ -17,6 +18,7 @@ body {
   grid-auto-rows:max-content;
   padding: 20px 0;
   border: 1px solid black;
+
 }
 .tableHeading{
   display: flex;
@@ -31,6 +33,7 @@ body {
   text-align: center;
   flex: 1 1 0%;
   text-align: center;
+  margin: 10px;
 }
 .teamName {
   min-width: 30%;
@@ -47,6 +50,7 @@ body {
     background-position: center;
     padding: 0;
     margin-top: 10px;
+    font-size: 12px;
   }
   .tableContainer {
     padding: 10px 2px;
@@ -63,6 +67,7 @@ body {
     max-width: 98vw;
     font-size: 0.95em;
     padding: 2px;
+    margin: 10px 0;
   }
   .teamName {
     min-width: 40%;
@@ -107,35 +112,3 @@ body {
   }
 }
 
-@media (max-width: 400px) {
-  body {
-    background-size: contain;
-    background-position: center;
-    padding: 0;
-    margin-top: 10px;
-  }
-  .tableContainer {
-    padding: 10px 2px;
-    gap: 5px;
-    border-width: 0.5px;
-    font-size: 0.95em;
-  }
-  .tableHeading {
-    gap: 4px;
-    font-size: 0.95em;
-    flex-wrap: wrap;
-  }
-  .valuesDiv {
-    max-width: 98vw;
-    font-size: 0.95em;
-    padding: 2px;
-  }
-  .teamName {
-    min-width: 40%;
-    font-size: 1em;
-    text-align: center;
-  }
-  .jerseyColor {
-    max-width: 16px;
-  }
-}
