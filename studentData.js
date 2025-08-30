@@ -31,7 +31,8 @@ export const students = [{
             'Singing',
             'Politics',
             'Football',
-            'Music'
+            'Music',
+            'Arguing'
         ]
     },
     {
