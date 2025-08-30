@@ -76,7 +76,7 @@ teams.forEach((team, i) => {
         ${i + 1}
       </div>
       <div class = 'valuesDiv teamName'>
-        <span class = 'jerseyColor' style="background-color: ${team.jerseyColor}; max-width: 80px;color: ${team.jerseyColor}">EIi</span>
+        <span class = 'jerseyColor' style="background-color: ${team.jerseyColor}; max-width: 80px;color: ${team.jerseyColor}">eIi</span>
         ${team.teamName}
       </div>
       <div class = 'valuesDiv'>
