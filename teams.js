@@ -102,6 +102,4 @@ teams.forEach((team, i) => {
       div.style.textAlign = 'center'
       div.style.flex = '1'
     })
-    
-
 })

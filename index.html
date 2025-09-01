@@ -7,12 +7,40 @@
   <link rel="stylesheet" href="./league.css">
 </head>
 <body style="background-color: #e6dada;">
-  <img src="./images/ddgCUP.jpg" alt="Football Image" class="ddgCup" style="width: 100%; max-width: 30rem; height: auto;">
-  <p><a href="./leagueTable.html"><button style="font-family: Georgia, 'Times New Roman', Times, serif; padding: 5px 10px; border: 1px solid #7c4444 ; box-shadow: 10px -5px 12px#2f5e7b; border-radius: 10px; background-image: linear-gradient(to right, blue, red, #fbfbfb);"> VIEW LEAGUE TABLE</button></a></p>
+  <nav>
+    <button id="nav-toggle" aria-label="Toggle navigation" style="background:transparent;border: none;cursor:pointer;font-size:1.5em;">
+        <img src="./images/bars-solid.svg" class="menuIcon navIcon" style="width:1.5em;height:1.5em;display:inline;">
+      </button>
+      <ul class="toggleList">
+        <li>
+          <a href="./leagueTable.html"> View League Table</a>
+        </li>
+        <li>
+          <a href="./fixtures.html">Fixtures List</a>
+        </li>
+        <li>
+          <a href="./goalsRankings.html">Goal Rankings</a>
+        </li>
+        <li>
+          <a href="./assitsRankings.html">Assits Rankings</a>
+        </li>
+      </ul>
+  </nav>
+  <img src="./images/ddgCUP.jpg" class = "siteImage" alt="Football Image" class="ddgCup" style="width: 100%; max-width: 30rem; height: auto;">
   <script>
-    document.querySelector('button').addEventListener('click', () => {
-      document.querySelector('button').style.backgroundColor = '#F71152'
-    })
+    const toggleBar = document.getElementById('nav-toggle')
+let isClicked = false
+toggleBar.addEventListener('click', () => {
+  isClicked = !isClicked
+  if (isClicked) {
+    document.querySelector('.toggleList').style.display = 'block'
+    document.querySelector('.menuIcon').src = './images/xmark-solid.svg'
+  }
+  else if (!isClicked){
+    document.querySelector('.toggleList').style.display = 'none'
+    document.querySelector('.menuIcon').src = './images/bars-solid.svg'
+  }
+})
   </script>
   
 </body>

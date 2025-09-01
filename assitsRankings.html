@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assists Ranking Table</title>
+  <style>
+    body {
+      background-image: url(./images/CL.jpg);
+      background-repeat:initial;
+      background-size: cover;
+      background-position: center;
+    }
+    .tableHeading{
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      flex: 1;
+      text-align: center;
+      border-bottom: 1px solid black;
+    }
+
+    .valuesDiv{
+      max-width: 300px;
+      text-align: center;
+      flex: 1 1 0%;
+      text-align: center;
+      margin: 10px;
+    }
+
+    .tableContainer {
+    background-image: url(./images/witeball.jpg);
+    background-position: left;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f4f4f4;
+    width: 90vw;
+    max-width: 700px;
+    min-width: 220px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: grid;
+    gap: 10px;
+    text-align: center;
+    grid-auto-rows:max-content;
+    padding: 20px 0;
+    border: 1px solid black;
+    transition: all .5s ease;
+  }
+  </style>
+</head>
+<body>
+  <div class="tableContainer">
+    <div class="tableHeading">
+      <div class = 'valuesDiv'>
+        P
+      </div>
+      <div class = 'valuesDiv teamName'>
+        Player Name
+      </div>
+      <div class = 'valuesDiv'>
+        Team
+      </div>
+      <div class = 'valuesDiv'>
+        Assists
+      </div>
+      
+    </div>
+  </div>
+  <script>
+    const assists = [
+      {
+        teamName: 'Team Apollos',
+        assists: [
+          { name: 'Badex', assists: 1 },
+        ]
+      },
+      {
+        teamName: 'Team Ayuba',
+        assists: [
+          { name: 'Jide', assists: 1 },
+          { name: 'Erepamo', assists: 1 }
+        ]
+      },
+      {
+        teamName: 'Team Abubakar',
+        assists: [
+          { name: 'Bashman', assists: 1 },
+          { name: 'Aaron', assists: 1 }
+        ]
+      },
+      {
+        teamName: 'Team Aduak',
+        assists: [
+          
+        ]
+      }
+    ];
+
+    // Example: Loop through the data
+    const loopedArr = []
+    loopedArr.sort((a, b) => {
+      return a.assists - b.assists || b.playerName - a.playerName
+    })
+
+    assists.forEach(team => {
+      const teamName = team.teamName
+      team.assists.forEach(player => {
+        loopedArr.push ({
+          teamName,
+          playerName: player.name,
+          assists: player.assists
+        })
+      })
+    });
+    loopedArr.sort((a, b) => {
+      return b.assists - a.assists || b.playerName - a.playerName
+    })
+    const container = document.querySelector('.tableContainer')
+    loopedArr.forEach((item, i) => {
+      container.innerHTML += `
+      <div class= "dataDiv">
+        <div class = 'valuesDiv'>
+          ${i + 1}
+        </div>
+        <div class = 'valuesDiv teamName'>
+          ${item.playerName}
+        </div>
+        <div class = 'valuesDiv'>
+          ${item.teamName}
+        </div>
+        <div class = 'valuesDiv'>
+          ${item.assists}
+        </div>
+      </div>
+      `
+    })
+    document.querySelectorAll('.dataDiv').forEach(div => {
+      div.style.display = 'flex'
+      div.style.flexDirection = 'row'
+      div.style.gap = '10px'
+      div.style.textAlign = 'center'
+      div.style.flex = '1'
+    })
+  </script>
+</body>
+</html>
