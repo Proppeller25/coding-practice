@@ -66,7 +66,13 @@ const teams = [
 ]
 
 teams.sort((a, b) => {
-  return b.points - a.points || b.goalDifference - a.goalDifference || b.GF - a.GF
+  if (b.points !== a.points) {
+    return b.points - a.points
+  }
+  if (b.goalDifference !== a.goalDifference) {
+    return b.goalDifference - a.goalDifference
+  }
+  return b.GF - a.GF
 })
 const container = document.querySelector('.tableContainer')
 
