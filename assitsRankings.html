@@ -49,7 +49,7 @@
     }
     @media (max-width: 600px) {
       body {
-        font-size: 12px;
+        font-size: 17px;
       }
       .tableHeading,
       .valuesDiv,
@@ -114,7 +114,9 @@
       {
         teamName: 'Team Aduak',
         assists: [
-          
+          { name: 'Desoji', assists: 1 },
+          { name: 'Chris', assists: 1 },
+          { name: 'Greg', assists: 1 }
         ]
       }
     ];
@@ -143,7 +145,7 @@
     })
     const container = document.querySelector('.tableContainer')
     loopedArr.forEach((item, i) => {
-      container.innerHTML += `
+      if (i < 10) container.innerHTML += `
       <div class= "dataDiv">
         <div class = 'valuesDiv'>
           ${i + 1}

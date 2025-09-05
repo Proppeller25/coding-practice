@@ -5,7 +5,7 @@ const teams = [
       return this.W * 3 + this.D
     },
     W: 0,
-    D: 1,
+    D: 0 + 1,
     L: 1,
     GP: 2,
     GF: 4,
@@ -21,7 +21,7 @@ const teams = [
       return this.W * 3 + this.D
     },
     W: 1,
-    D: 1,
+    D: 0 + 1,
     L: 0,
     GP: 2,
     GF: 2,
@@ -37,7 +37,7 @@ const teams = [
       return this.W * 3 + this.D
     },
     W: 0,
-    D: 2,
+    D: 1 + 1,
     L: 0,
     GP: 2,
     GF: 2,
@@ -53,7 +53,7 @@ const teams = [
       return this.W * 3 + this.D
     },
     W: 0,
-    D: 2,
+    D: 1 + 1,
     L: 0,
     GP: 2,
     GF: 6,
@@ -78,6 +78,9 @@ teams.forEach((team, i) => {
       <div class = 'valuesDiv teamName'>
         <span class = 'jerseyColor' style="background-color: ${team.jerseyColor}; max-width: 80px;color: ${team.jerseyColor}">eIi</span>
         ${team.teamName}
+      </div>
+      <div class = 'valuesDiv WLD'>
+        ${team.W}-${team.L}-${team.D}
       </div>
       <div class = 'valuesDiv'>
         ${team.GP}

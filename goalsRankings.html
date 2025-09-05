@@ -53,7 +53,7 @@
     .tableContainer,
     .tableHeading,
     .valuesDiv {
-      font-size: 0.8rem;
+      font-size: 0.76rem;
     }
     .valuesDiv {
       margin: 5px;
@@ -122,8 +122,7 @@
     const loopedArr = []
     loopedArr.sort((a, b) => {
       return a.goals - b.goals || b.playerName - a.playerName
-    })
-
+    })    
     goalScorers.forEach(team => {
       const teamName = team.teamName
       team.goalScorers.forEach(player => {
@@ -142,7 +141,7 @@
     })
     const container = document.querySelector('.tableContainer')
     loopedArr.forEach((item, i) => {
-      container.innerHTML += `
+      if (i < 10) container.innerHTML += `
       <div class= "dataDiv">
         <div class = 'valuesDiv'>
           ${i + 1}
@@ -158,6 +157,7 @@
         </div>
       </div>
       `
+
     })
     document.querySelectorAll('.dataDiv').forEach(div => {
       div.style.display = 'flex'

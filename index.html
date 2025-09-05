@@ -44,10 +44,12 @@ toggleBar.addEventListener('click', () => {
   if (isClicked) {
     document.querySelector('.toggleList').style.display = 'block'
     document.querySelector('.menuIcon').src = './images/xmark-solid.svg'
+    document.querySelector('nav').style.maxWidth = '100%'
   }
   else if (!isClicked){
     document.querySelector('.toggleList').style.display = 'none'
     document.querySelector('.menuIcon').src = './images/bars-solid.svg'
+    document.querySelector('nav').style.maxWidth = '7%'
   }
 })
   </script>

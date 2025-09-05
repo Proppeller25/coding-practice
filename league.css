@@ -40,6 +40,9 @@ body {
 .teamName {
   min-width: 30%;
 }
+.WLD {
+  min-width: fit-content;
+}
 
 .jerseyColor {
   max-width: 20px;
@@ -64,7 +67,8 @@ nav {
       margin-bottom: 10px;
       transition: all .5s ease-in-out;
       position: relative;
-      min-height: 48px;
+      min-height: 38px;
+      max-width: 7%;
     }
 
   #nav-toggle {
@@ -190,6 +194,18 @@ nav {
   .jerseyColor {
     max-width: 16px;
   }
+
+  nav {
+      background: #7CC3E3;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 8px #0002;
+      margin-bottom: 10px;
+      transition: all .5s ease-in-out;
+      position: relative;
+      min-height: 25px;
+      max-width: 7%;
+    }
 
   #nav-toggle {
     top: 6px;
