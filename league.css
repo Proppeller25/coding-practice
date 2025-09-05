@@ -111,7 +111,7 @@ nav {
   background-color: #f4f4f4;
   width: 90vw;
   max-width: 700px;
-  min-width: 220px;
+  /* min-width: 220px; */
   margin: 0 auto;
   box-sizing: border-box;
   display: grid;
@@ -127,6 +127,7 @@ nav {
   background-repeat: no-repeat;
   background-position: center;
   font-weight: bold;
+  border-radius: 10px;
   }
 
   .dayDiv {
@@ -145,7 +146,7 @@ nav {
     background-image: url(./images/witeball.jpg);
     /* background-position: left; */
     /* background-size: contain; */
-    color:#1a1919
+    color:#1a1919;
   }
 
 .menuIcon.navIcon {
@@ -267,6 +268,7 @@ nav {
   border: 1px solid black;
   transition: all .5s ease;
   font-size: 8px;
+  border-radius: 10px;
   }
 }
 

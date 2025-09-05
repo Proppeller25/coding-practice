@@ -2,14 +2,14 @@ const teams = [
   {
     teamName: 'Team Aduak',
     get points () {
-      return this.W * 3
+      return this.W * 3 + this.D
     },
     W: 0,
-    D: 0,
+    D: 1,
     L: 1,
-    GP: 1,
-    GF: 0,
-    GA: 2,
+    GP: 2,
+    GF: 4,
+    GA: 6,
     get goalDifference () {
       return this.GF - this.GA
     },
@@ -21,9 +21,9 @@ const teams = [
       return this.W * 3 + this.D
     },
     W: 1,
-    D: 0,
+    D: 1,
     L: 0,
-    GP: 1,
+    GP: 2,
     GF: 2,
     GA: 0,
     get goalDifference () {
@@ -37,9 +37,9 @@ const teams = [
       return this.W * 3 + this.D
     },
     W: 0,
-    D: 1,
+    D: 2,
     L: 0,
-    GP: 1,
+    GP: 2,
     GF: 2,
     GA: 2,
     get goalDifference () {
@@ -53,11 +53,11 @@ const teams = [
       return this.W * 3 + this.D
     },
     W: 0,
-    D: 1,
+    D: 2,
     L: 0,
-    GP: 1,
-    GF: 2,
-    GA: 2,
+    GP: 2,
+    GF: 6,
+    GA: 6,
     get goalDifference () {
       return this.GF - this.GA
     },

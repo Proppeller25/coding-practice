@@ -7,25 +7,26 @@
 <style>
   body {
     background-image: url(./images/CL.jpg);
-    background-repeat:initial;
+    background-repeat: initial;
     background-size: cover;
     background-position: center;
   }
-  .tableHeading{
+  .tableHeading {
     display: flex;
     flex-direction: row;
     gap: 10px;
     flex: 1;
     text-align: center;
     border-bottom: 1px solid black;
+    font-size: 1rem;
   }
 
-  .valuesDiv{
+  .valuesDiv {
     max-width: 300px;
     text-align: center;
     flex: 1 1 0%;
-    text-align: center;
     margin: 10px;
+    font-size: 1rem;
   }
 
   .tableContainer {
@@ -41,10 +42,26 @@
     display: grid;
     gap: 10px;
     text-align: center;
-    grid-auto-rows:max-content;
+    grid-auto-rows: max-content;
     padding: 20px 0;
     border: 1px solid black;
     transition: all .5s ease;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 600px) {
+    .tableContainer,
+    .tableHeading,
+    .valuesDiv {
+      font-size: 0.8rem;
+    }
+    .valuesDiv {
+      margin: 5px;
+      max-width: 120px;
+    }
+    .tableContainer {
+      padding: 10px 0;
+    }
   }
   </style>
 </head>
@@ -79,7 +96,10 @@
         teamName: 'Team Ayuba',
         goalScorers: [
           { name: 'Jide', goals: 1 },
-          { name: 'Sequence', goals: 1 }
+          { name: 'Sequence', goals: 2 },
+          { name: 'Mazi', goals: 2 },
+          { name: 'Timi', goals: 1 }
+
         ]
       },
       {
@@ -92,7 +112,8 @@
       {
         teamName: 'Team Aduak',
         goalScorers: [
-      
+          { name: 'AKP Paul', goals: 2 },
+          { name: 'Abdulmalik', goals: 1 }
         ]
       }
     ];
@@ -114,7 +135,10 @@
       })
     });
     loopedArr.sort((a, b) => {
-      return b.goals - a.goals || b.playerName - a.playerName
+      if (b.goals !== a.goals) {
+      return b.goals - a.goals;
+      }
+      return a.playerName.localeCompare(b.playerName);
     })
     const container = document.querySelector('.tableContainer')
     loopedArr.forEach((item, i) => {
