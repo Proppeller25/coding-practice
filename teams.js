@@ -1,15 +1,17 @@
-const teams = [
+export const teams = [
   {
     teamName: 'Team Aduak',
     get points () {
       return this.W * 3 + this.D
     },
-    W: 0,
+    W: 0 + 1,
     D: 0 + 1,
     L: 1,
-    GP: 2,
-    GF: 4,
-    GA: 6,
+    get GP (){
+      return this.W + this.D + this.L
+    },
+    GF: 4 + 3,
+    GA: 6 + 1,
     get goalDifference () {
       return this.GF - this.GA
     },
@@ -38,8 +40,10 @@ const teams = [
     },
     W: 0,
     D: 1 + 1,
-    L: 0,
-    GP: 2,
+    L: 0 + 1,
+    get GP (){
+      return this.W + this.D + this.L
+    },
     GF: 2,
     GA: 2,
     get goalDifference () {
@@ -55,7 +59,9 @@ const teams = [
     W: 0,
     D: 1 + 1,
     L: 0,
-    GP: 2,
+    get GP (){
+      return this.W + this.D + this.L
+    },
     GF: 6,
     GA: 6,
     get goalDifference () {

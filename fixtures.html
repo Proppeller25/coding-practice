@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="league.css">
 </head>
 <body>
-  <img src="./images/YolaImg.jpeg" alt="YolaLogo" style="width: 100px;">
+  <img src="./images/YolaImg.jpeg" alt="YolaLogo" style="width: 100px; margin-bottom: 50px;">
   <div class="fixturesContainer">
      Fixture week 1 <p>30th August, 2025</p>
     <div class="dayDiv">
@@ -29,23 +29,105 @@
     </div>
     </div>
 
-    Fixture week 3 <p>13th September, 2025</p>
+    Fixture week 3 <p>12th & 13th September, 2025</p>
     <div class="dayDiv">
     <div class="fixtureDiv">
-      Team Apollos <p></p>V <p></p>Team Ayuba <br> <p>7:30am - 8:45am</p>
+      Team Aduak <p></p> <span class = 'jerseyColor' style="background-color: white; color: black; max-width: 80px; padding: .5px 4px;">3</span> V <span class = 'jerseyColor' style="background-color: blue; color: black; max-width: 80px; padding: .5px 4px;">1</span><p></p>Team Abubakar <br> <p> 4:00pm - 6:00pm</p>
     </div>
     <div class="fixtureDiv">
-      Team Aduak <p></p>V <p></p>Team Abubakar <br> <p>9:00am - 10:30am</p>
+      Team Apollos <p></p> <span class = 'jerseyColor' style="background-color: white; color: black; max-width: 80px; padding: .5px 4px;"> </span> V <span class = 'jerseyColor' style="background-color: rgb(7, 7, 7); color: black; max-width: 80px; padding: .5px 4px;"></span><p></p>Team Ayuba <br> <p>4:00pm - 6:00pm</p>
     </div>
     </div>
-    FINAL
+    FINALs as it stands <br>TBD
     <div class="dayDiv">
-      <div class="fixtureDiv">
-      TBD <br> <p>7:30am - 8:45am</p>
+      <div class="fixtureDiv lastDiv">
+       <br> <p>7:30am - 8:45am</p>
     </div>
     </div>
   </div>
   <script>
+const teams = [
+  {
+    teamName: 'Team Aduak',
+    get points () {
+      return this.W * 3 + this.D
+    },
+    W: 0 + 1,
+    D: 0 + 1,
+    L: 1,
+    get GP (){
+      return this.W + this.D + this.L
+    },
+    GF: 4 + 3,
+    GA: 6 + 1,
+    get goalDifference () {
+      return this.GF - this.GA
+    },
+    jerseyColor: 'white'
+  },
+    {
+    teamName: 'Team Apollos',
+    get points () {
+      return this.W * 3 + this.D
+    },
+    W: 1,
+    D: 0 + 1,
+    L: 0,
+    GP: 2,
+    GF: 2,
+    GA: 0,
+    get goalDifference () {
+      return this.GF - this.GA
+    },
+    jerseyColor: 'red'
+  },
+    {
+    teamName: 'Team Abubakar',
+    get points () {
+      return this.W * 3 + this.D
+    },
+    W: 0,
+    D: 1 + 1,
+    L: 0 + 1,
+    get GP (){
+      return this.W + this.D + this.L
+    },
+    GF: 2,
+    GA: 2,
+    get goalDifference () {
+      return this.GF - this.GA
+    },
+    jerseyColor: 'blue'
+  },
+    {
+    teamName: 'Team Ayuba',
+    get points () {
+      return this.W * 3 + this.D
+    },
+    W: 0,
+    D: 1 + 1,
+    L: 0,
+    get GP (){
+      return this.W + this.D + this.L
+    },
+    GF: 6,
+    GA: 6,
+    get goalDifference () {
+      return this.GF - this.GA
+    },
+    jerseyColor: 'black'
+  }
+]
+teams.sort((a, b) => {
+  if (b.points !== a.points) {
+    return b.points - a.points
+  }
+  if (b.goalDifference !== a.goalDifference) {
+    return b.goalDifference - a.goalDifference
+  }
+  return b.GF - a.GF
+})
+  document.querySelector('.lastDiv').innerHTML = `${teams[0].teamName} <p></p> V <p></p>${teams[1].teamName}` 
   </script>
 </body>
 </html>

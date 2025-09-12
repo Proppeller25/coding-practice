@@ -108,7 +108,7 @@
         teamName: 'Team Abubakar',
         assists: [
           { name: 'Bashman', assists: 1 },
-          { name: 'Aaron', assists: 1 }
+          { name: 'Aaron', assists: 1 },
         ]
       },
       {
@@ -116,7 +116,8 @@
         assists: [
           { name: 'Desoji', assists: 1 },
           { name: 'Chris', assists: 1 },
-          { name: 'Greg', assists: 1 }
+          { name: 'Greg', assists: 2 },
+          { name: 'AKP Paul', assists: 2 },
         ]
       }
     ];
@@ -126,15 +127,21 @@
     loopedArr.sort((a, b) => {
       return a.assists - b.assists || b.playerName - a.playerName
     })
-
+    
     assists.forEach(team => {
       const teamName = team.teamName
       team.assists.forEach(player => {
-        loopedArr.push ({
+        const findPlayer = loopedArr.find(p => p.playerName === player.name)
+        if (!findPlayer){
+          loopedArr.push ({
           teamName,
           playerName: player.name,
           assists: player.assists
         })
+        }
+        else if (findPlayer){
+          findPlayer.assists += 1
+        }
       })
     });
     loopedArr.sort((a, b) => {
