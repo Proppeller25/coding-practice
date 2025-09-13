@@ -24,10 +24,10 @@ export const teams = [
     },
     W: 1,
     D: 0 + 1,
-    L: 0,
+    L: 0 + 1,
     GP: 2,
     GF: 2,
-    GA: 0,
+    GA: 0 + 1,
     get goalDifference () {
       return this.GF - this.GA
     },
@@ -56,13 +56,13 @@ export const teams = [
     get points () {
       return this.W * 3 + this.D
     },
-    W: 0,
+    W: 0 + 1,
     D: 1 + 1,
     L: 0,
     get GP (){
       return this.W + this.D + this.L
     },
-    GF: 6,
+    GF: 6 + 1,
     GA: 6,
     get goalDifference () {
       return this.GF - this.GA

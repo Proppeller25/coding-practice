@@ -35,7 +35,7 @@
       Team Aduak <p></p> <span class = 'jerseyColor' style="background-color: white; color: black; max-width: 80px; padding: .5px 4px;">3</span> V <span class = 'jerseyColor' style="background-color: blue; color: black; max-width: 80px; padding: .5px 4px;">1</span><p></p>Team Abubakar <br> <p> 4:00pm - 6:00pm</p>
     </div>
     <div class="fixtureDiv">
-      Team Apollos <p></p> <span class = 'jerseyColor' style="background-color: white; color: black; max-width: 80px; padding: .5px 4px;"> </span> V <span class = 'jerseyColor' style="background-color: rgb(7, 7, 7); color: black; max-width: 80px; padding: .5px 4px;"></span><p></p>Team Ayuba <br> <p>4:00pm - 6:00pm</p>
+      Team Apollos <p></p> <span class = 'jerseyColor' style="background-color: red; color: black; max-width: 80px; padding: .5px 4px;"> 0</span> V <span class = 'jerseyColor' style="background-color: rgb(7, 7, 7); color: rgb(247, 244, 244); max-width: 80px; padding: .5px 4px;">1</span><p></p>Team Ayuba <br> <p>4:00pm - 6:00pm</p>
     </div>
     </div>
     FINALs as it stands <br>TBD
@@ -72,10 +72,10 @@ const teams = [
     },
     W: 1,
     D: 0 + 1,
-    L: 0,
+    L: 0 + 1,
     GP: 2,
     GF: 2,
-    GA: 0,
+    GA: 0 + 1,
     get goalDifference () {
       return this.GF - this.GA
     },
@@ -104,13 +104,13 @@ const teams = [
     get points () {
       return this.W * 3 + this.D
     },
-    W: 0,
+    W: 0 + 1,
     D: 1 + 1,
     L: 0,
     get GP (){
       return this.W + this.D + this.L
     },
-    GF: 6,
+    GF: 6 + 1,
     GA: 6,
     get goalDifference () {
       return this.GF - this.GA
