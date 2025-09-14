@@ -93,11 +93,11 @@ teams.forEach((team, i) => {
         <span class = 'jerseyColor' style="background-color: ${team.jerseyColor}; max-width: 80px;color: ${team.jerseyColor}">eIi</span>
         ${team.teamName}
       </div>
+      <div class = 'valuesDiv ' style="text-align: center;">
+        ${team.GP}
+      </div>
       <div class = 'valuesDiv WLD'>
         ${team.W}-${team.L}-${team.D}
-      </div>
-      <div class = 'valuesDiv'>
-        ${team.GP}
       </div>
       <div class = 'valuesDiv'>
         ${team.points}
